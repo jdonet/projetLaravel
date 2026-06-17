@@ -5,6 +5,8 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
+    "test": "echo \"No tests configured\" && exit 0",
+    "lint": "eslint .",
     "prepare": "husky"
   },
   "devDependencies": {
