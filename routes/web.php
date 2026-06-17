@@ -9,3 +9,6 @@ Route::get('/', function () {
 Route::get('/User-register', function () {
     return view('welcome');
 });
+Route::get('/User-delete', function () {
+    return view('welcome');
+});
