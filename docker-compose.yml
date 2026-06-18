@@ -5,6 +5,8 @@ services:
       dockerfile: docker/Dockerfile
     volumes:
       - .:/var/www/html         # code source monté
+      - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini #config xdebug
+
     networks:
       - laravel
 
