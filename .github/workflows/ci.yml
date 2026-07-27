@@ -1,5 +1,5 @@
 - name: Une étape qui échoue
-        run: exit 1
+  run: exit 1
 
 - name: Cette étape ne s'exécutera pas
   run: echo "on ne me verra jamais"
