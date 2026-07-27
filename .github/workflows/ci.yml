@@ -1,18 +1,5 @@
-name: Mon premier pipeline
+- name: Une étape qui échoue
+        run: exit 1
 
-on:
-  push:
-
-jobs:
-  bonjour:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dire bonjour
-        run: echo "Je suis le job bonjour"
-
-  aurevoir:
-    runs-on: ubuntu-latest
-    needs: bonjour        # attend que bonjour soit terminé
-    steps:
-      - name: Dire au revoir
-        run: echo "Je suis le job aurevoir, bonjour est terminé"
+      - name: Cette étape ne s'exécutera pas
+        run: echo "on ne me verra jamais"
