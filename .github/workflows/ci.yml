@@ -1,17 +1,33 @@
-name: Mon premier pipeline
+name: CI Laravel
 
-on:
+on:                          # déclencheurs
   push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  bonjour:
-    runs-on: ubuntu-latest
+  tests:                     # nom du job
+    runs-on: ubuntu-latest   # runner GitHub-hosted
+
     steps:
-      - name: Dire bonjour
-        run: echo "Je suis le job bonjour"
+      - name: Checkout du code # clone le dépôt
+        uses: actions/checkout@v4
 
-      - name: Une étape qui échoue
-        run: exit 1
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: pdo, pdo_mysql, mbstring, bcmath
+          coverage: xdebug
 
-      - name: Cette étape ne s'exécutera pas
-        run: echo "on ne me verra jamais"
+      - name: Installer les dépendances
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Préparer le .env de test
+        run: |
+          cp .env.example .env.testing
+          php artisan key:generate --env=testing
+
+      - name: Lancer les tests
+        run: php artisan test
