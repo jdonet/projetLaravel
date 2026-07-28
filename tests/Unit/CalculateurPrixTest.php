@@ -16,8 +16,8 @@ class CalculateurPrixTest extends TestCase
         $resultat = $calculateur->calculerAvecTaxe(100.00, 0.15);
 
         // Assert
-        $this->assertEquals(115.00, $resultat);
-//        $this->assertEquals(120.00, $resultat); // valeur incorrecte
+//        $this->assertEquals(115.00, $resultat);
+        $this->assertEquals(120.00, $resultat); // valeur incorrecte
 
     }
     public function test_remise_ne_peut_pas_rendre_prix_negatif(): void{
