@@ -1,0 +1,7 @@
+includes:
+    - vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+    paths:
+        - app
+    level: 8 #Pour votre projet, vous pouvez baisser à 5

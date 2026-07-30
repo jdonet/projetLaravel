@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services;
 
 class CalculateurPrix
@@ -12,11 +13,20 @@ class CalculateurPrix
     public function calculerAvecTaxe(float $prixHT, float $tauxTaxe): float
     {
         if ($tauxTaxe < 0  or $prixHT < 0) {
-            throw new \InvalidArgumentException("Le taux de taxe et le prix ne peuvent pas être négatifs.");
+            throw new \InvalidArgumentException('Taux négatif.');
         }
 
         return round($prixHT * (1 + $tauxTaxe), 2);
     }
+
+    /* public function calculerAvecTaxe(float $prixHT, float $tauxTaxe): float
+    {
+        if ($tauxTaxe < 0  or $prixHT < 0) {
+            throw new \InvalidArgumentException("Le taux de taxe et le prix ne peuvent pas être négatifs.");
+        }
+
+        return round($prixHT * (1 + $tauxTaxe), 2);
+    }*/
 
     /**
      * Applique une remise en pourcentage sur un prix.
@@ -26,8 +36,8 @@ class CalculateurPrix
      */
     public function appliquerRemise(float $prix, float $remisePourcentage): float
     {
-        if ($remisePourcentage < 0  or $prix < 0) {
-            throw new \InvalidArgumentException("La remise et le prix ne peuvent pas être négatifs.");
+        if ($remisePourcentage < 0 or $prix < 0) {
+            throw new \InvalidArgumentException('La remise et le prix ne peuvent pas être négatifs.');
         }
 
         $prixApresRemise = $prix - ($prix * $remisePourcentage / 100);
@@ -43,10 +53,9 @@ class CalculateurPrix
     public function respecteSeuilMinimum(float $prix, float $seuilMinimum): bool
     {
         if ($seuilMinimum < 0 or $prix < 0) {
-            throw new \InvalidArgumentException("Le seuil minimum et le prix ne peuvent pas être négatifs.");
+            throw new \InvalidArgumentException('Le seuil minimum et le prix ne peuvent pas être négatifs.');
         }
 
         return $prix >= $seuilMinimum;
     }
-
 }
