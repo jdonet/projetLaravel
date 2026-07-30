@@ -12,7 +12,7 @@ class CalculateurPrix
      */
     public function calculerAvecTaxe(float $prixHT, float $tauxTaxe): float
     {
-        if ($tauxTaxe < 0  or $prixHT < 0) {
+        if ($tauxTaxe < 0 or $prixHT < 0) {
             throw new \InvalidArgumentException('Taux négatif.');
         }
 
