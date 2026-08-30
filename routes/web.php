@@ -6,14 +6,12 @@ use Illuminate\Support\Facades\DB;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::get('/User-register', function () {
     return view('welcome');
 });
 Route::get('/User-delete', function () {
     return view('welcome');
 });
-
 Route::get('/health', function () {
     try { // Vérifier la connexion à la base de données
         DB::connection()->getPdo();
