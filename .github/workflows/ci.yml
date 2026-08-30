@@ -99,7 +99,7 @@ jobs:
             docker compose exec -T app cp .env.example .env &&
             docker compose exec -T app php artisan key:generate &&
             docker compose exec -T app php artisan migrate --force &&
-            docker compose exec -T app chown -R deploy:www-data storage bootstrap/cache &&
+            docker compose exec -T app chown -R ${{ secrets.DEPLOY_USER }}:www-data storage bootstrap/cache &&
             docker compose exec -T app chmod -R 775 storage bootstrap/cache
           "
 
