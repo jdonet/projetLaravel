@@ -94,5 +94,12 @@ jobs:
             git pull origin main &&
             docker compose down &&
             docker compose up -d --build
+            sleep 5 &&
+            docker compose exec -T app composer install --no-interaction --prefer-dist &&
+            docker compose exec -T app cp .env.example .env &&
+            docker compose exec -T app php artisan key:generate &&
+            docker compose exec -T app php artisan migrate --force &&
+            docker compose exec -T app chown -R www-data:www-data storage bootstrap/cache &&
+            docker compose exec -T app chmod -R 775 storage bootstrap/cache
           "
 
