@@ -104,4 +104,4 @@ jobs:
       - name: Smoke test
         run: |
           sleep 5  # laisser le temps à l'app de redémarrer
-          curl -f http://${{ secrets.DEPLOY_HOST }}/health || exit 1
+          curl -f http://${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_PORT }}/health || exit 1
