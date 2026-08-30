@@ -103,3 +103,7 @@ jobs:
             docker compose exec -T app chmod -R 775 storage bootstrap/cache
           "
 
+      - name: Smoke test
+        run: |
+          sleep 5  # laisser le temps à l'app de redémarrer
+          curl -f http://${{ secrets.DEPLOY_HOST }}/health || exit 1
