@@ -1,4 +1,7 @@
 FROM php:8.4-fpm
+# configurer php-fpm pour utiliser l'utilisateur deploy :
+RUN sed -i 's/user = www-data/user = deploy/' /usr/local/etc/php-fpm.d/www.conf && \
+    sed -i 's/group = www-data/group = deploy/' /usr/local/etc/php-fpm.d/www.conf
 # Dépendances système
 RUN apt-get update && apt-get install -y unzip libzip-dev \
     && rm -rf /var/lib/apt/lists/*

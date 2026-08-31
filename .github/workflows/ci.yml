@@ -98,10 +98,7 @@ jobs:
             sleep 5 &&
             docker compose exec -T app composer install --no-interaction --prefer-dist &&
             docker compose exec -T app php artisan migrate --force &&
-            docker compose exec -T app php artisan optimize:clear &&
-            chown -R deploy:www-data /home/deploy/${{ secrets.EQUIPE_NOM }} &&
-            chmod -R 775 /home/deploy/${{ secrets.EQUIPE_NOM }}/storage &&
-            chmod -R 775 /home/deploy/${{ secrets.EQUIPE_NOM }}/bootstrap/cache
+            docker compose exec -T app php artisan optimize:clear
           "
 
       - name: Smoke test
