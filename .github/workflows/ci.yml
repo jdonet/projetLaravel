@@ -99,9 +99,9 @@ jobs:
             docker compose exec -T app composer install --no-interaction --prefer-dist &&
             docker compose exec -T app php artisan migrate --force &&
             docker compose exec -T app php artisan optimize:clear &&
-            sudo chown -R deploy:www-data /home/deploy/${{ secrets.EQUIPE_NOM }} &&
-            sudo chmod -R 775 /home/deploy/${{ secrets.EQUIPE_NOM }}/storage &&
-            sudo chmod -R 775 /home/deploy/${{ secrets.EQUIPE_NOM }}/bootstrap/cache
+            chown -R deploy:www-data /home/deploy/${{ secrets.EQUIPE_NOM }} &&
+            chmod -R 775 /home/deploy/${{ secrets.EQUIPE_NOM }}/storage &&
+            chmod -R 775 /home/deploy/${{ secrets.EQUIPE_NOM }}/bootstrap/cache
           "
 
       - name: Smoke test
