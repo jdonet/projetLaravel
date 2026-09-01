@@ -41,6 +41,9 @@ services:
     working_dir: /app
     volumes:
       - .:/app
+      - ~/.ssh:/root/.ssh:ro
+    environment:
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
     entrypoint: ["tail", "-f", "/dev/null"]
     networks:
       - laravel
