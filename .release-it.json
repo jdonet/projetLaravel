@@ -6,11 +6,6 @@
     "github": {
         "release": true,
         "releaseName": "Release v${version}"
-    },
-    "plugins": {
-        "@release-it/conventional-changelog": {
-            "preset": "conventionalcommits",
-            "infile": "CHANGELOG.md"
-        }
     }
+
 }
